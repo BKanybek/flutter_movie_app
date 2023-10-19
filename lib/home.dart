@@ -48,6 +48,7 @@ class _HomeState extends State<Home> {
       final url = Uri.parse(
           'https://api.themoviedb.org/3/search/movie?api_key=$apiKey&query=$query');
       final response = await http.get(url);
+      print(response);
 
       if (response.statusCode == 200) {
         final jsonData = json.decode(response.body);
@@ -153,9 +154,11 @@ class _HomeState extends State<Home> {
                                 Text(
                                   movie.title,
                                   style: const TextStyle(
-                                    fontSize: 18,
+                                    fontSize: 16,
                                     fontWeight: FontWeight.bold,
                                   ),
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 2,
                                 ),
                                 const SizedBox(
                                   height: 4,
